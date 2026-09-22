@@ -7,7 +7,13 @@
     "version",
     "sample_id",
     "actors",
+    "lifecycle_stages",
     "facts",
+    "operating_matters",
+    "change_events",
+    "change_rules",
+    "information_access",
+    "review_dimensions",
     "constraints"
   ],
   "properties": {
@@ -27,22 +33,59 @@
       "type": "array",
       "minItems": 2,
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": ["id", "name", "roles"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
       }
+    },
+    "lifecycle_stages": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 }
     },
     "facts": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "operating_matters": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "change_events": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "change_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "information_access": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "review_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
     },
     "constraints": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 1 }
     }
   },
   "additionalProperties": false
